@@ -1,1 +1,1 @@
-# CRICKET-GAME
+# Rock paper scissor game
