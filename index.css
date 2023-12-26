@@ -1,0 +1,21 @@
+body{
+    text-align: center;
+} 
+.buttons{
+    height: 100px;
+    width: 100px;
+    border: none;
+    background-color: darksalmon;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.choise-image{
+    height: 100px;
+
+}
+.choise-images{
+    height: 60px;
+    border-radius: 2px;
+    background-color: plum;
+}

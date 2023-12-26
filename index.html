@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css">
+    <title>cricket game</title>
+ 
+</head>
+<body>
+    <h1>Rock Paper Scissor Game</h1>
+   
+    <button class="buttons
+    " onclick=" 
+     let computerchoice=computervalue();
+     let userchoice='Rock';
+     let result=resultgame(computerchoice,userchoice);
+     showresult(userchoice,computerchoice,result,score.won,score.lose,score.tie);
+     "
+     ><img src="rock.jpg" alt="rock" class="choise-images"> </button>
+     
+     
+     <button class="buttons
+     "onclick="
+     let computerchoice=computervalue();
+        let userchoice='Paper';
+     let result=resultgame(computerchoice,userchoice);
+     showresult(userchoice,computerchoice,result);
+     "><img src="paper.jpg" alt="paper" class="choise-images"> </button>
+     
+     
+     <button class="buttons
+     "onclick="
+     let computerchoice=computervalue();
+        let userchoice='Scissor';
+     let result=resultgame(computerchoice,userchoice);
+     showresult(userchoice,computerchoice,result);
+     "><img src="scissor .jpg" alt="scissor" class="choise-images"></button>
+     
+     <h3 id="user"></h3>
+     <h3 id="com"></h3>
+     <h3 id="res"></h3>
+     <h3 id="scr"></h3>
+     <button onclick="localStorage.clear()
+     resetscore(scorestr);
+     ">reset</button>
+
+<script>
+    function computervalue(){
+        let randomnumber= Math.random()*3;
+    if(randomnumber>0&&randomnumber<=1)
+    {
+         return'Rock';
+    }
+    else
+        if(randomnumber>1&&randomnumber<=2){
+            return'Paper';
+        }
+        else{
+            return'Scissor';
+        }
+    }
+    function resultgame(computerchoice,userchoice){
+if(computerchoice===userchoice){
+    score.tie++;
+    return'tie';
+    
+}
+else if(computerchoice==='Paper'&&userchoice==='Scissor'){
+    score.won++;
+    return'user won';
+}
+else if(computerchoice==='Rock'&&userchoice==='Paper'){
+    score.won++;
+    return'user won';
+
+}
+else if(computerchoice==='Scissor'&&userchoice==='Rock'){
+    score.won++;
+    return'user won';
+}
+else{
+    score.lose++;
+    return'computer won'
+}
+    }
+    function showresult(a,b,c){
+        localStorage.setItem(score,JSON.stringify(score))
+        document.querySelector('#user').innerText= `Your Choice is : ${a}`;
+        document.querySelector('#com').innerText=  `Computer choice is : ${b}`;
+        document.querySelector('#res').innerText=  `So '${c}'`;
+        document.querySelector('#scr').innerText=`${score.displayscore()}`;
+    }
+    let scorestr=localStorage.getItem('score');
+    let score;
+    resetscore(scorestr);
+    function resetscore(scorestr){
+        score=scorestr ? JSON.parse(scorestr) :
+    { 
+        won:0,
+        lose:0,
+        tie:0,
+    };
+
+     score.displayscore =function(){
+    return ` score= won:${score.won} lose:${score.lose} tie:${score.tie}`
+        };
+        showresult(0,0,0);
+    }
+</script>
+</body>
+</html>
